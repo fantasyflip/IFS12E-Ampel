@@ -20,7 +20,7 @@ namespace Ampelprojekt_IFS12
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Ampel_Steuerung Ampel;
+        private Ampel_Steuerung Ampel = new Ampel_Steuerung(500, 10);
 
         public MainWindow()
         {
@@ -31,19 +31,19 @@ namespace Ampelprojekt_IFS12
         private void btnEin_Click(object sender, RoutedEventArgs e)
         {
             //
-            
+            Ampel.einschalten();
         }
 
         private void btnUm_Click(object sender, RoutedEventArgs e)
         {
             //
-           
+            Ampel.umschalten();
         }
 
         private void btnAus_Click(object sender, RoutedEventArgs e)
         {
             //
-            
+            Ampel.ausschalten();
         }
 
         private void btnEnde_Click(object sender, RoutedEventArgs e)

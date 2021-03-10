@@ -10,7 +10,7 @@ namespace Ampelprojekt_IFS12
     {
         // 0=aus; 1=gelb; 2=rot; 3=rotgelb; 4=grün
         private int Zustand = 0;
-        private Ampel_Form Ampelformular;
+        private Ampel_Form Ampelformular = new Ampel_Form();
         
         public Ampel_Steuerung(int x, int y)
         {
@@ -21,17 +21,66 @@ namespace Ampelprojekt_IFS12
         public void einschalten()
         {
             //
-           
+            if(this.Zustand == 0)
+            {
+                this.Zustand = 1;
+                Ampelformular.GelbEin();
+            }
         }
         public void ausschalten()
         {
             //
-            
+            if(this.Zustand == 1)
+            {
+                this.Zustand = 0;
+                Ampelformular.GelbAus();
+            }
         }
 
         public void umschalten()
         {
             //
+            if(this.Zustand > 0)
+            {
+                switch(this.Zustand)
+                {
+                    case 1:
+                        {
+                            this.Ampelformular.GelbAus();
+                            this.Ampelformular.RotEin();
+                            this.Zustand = 2;
+                            break;
+                        }
+                    case 2:
+                        {
+                            this.Ampelformular.GelbEin();
+                            this.Zustand = 3;
+                            break;
+                        }
+                    case 3:
+                        {
+                            this.Ampelformular.RotAus();
+                            this.Ampelformular.GelbAus();
+                            this.Ampelformular.GruenEin();
+                            this.Zustand = 4;
+                            break;
+                        }
+                    case 4:
+                        {
+                            this.Ampelformular.GruenAus();
+                            this.Ampelformular.GelbEin();
+                            this.Zustand = 1;
+                            break;
+                        }
+                    default:
+                        {
+                            this.Ampelformular.GruenEin();
+                            this.Ampelformular.GelbEin();
+                            this.Ampelformular.RotEin();
+                            break;
+                        }
+                }
+            }
             
         }
     }
