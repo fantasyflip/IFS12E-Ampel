@@ -44,6 +44,7 @@ namespace Ampelprojekt_IFS12
             {
                 switch(this.Zustand)
                 {
+                    //Gelb -> Rot
                     case 1:
                         {
                             this.Ampelformular.GelbAus();
@@ -51,12 +52,14 @@ namespace Ampelprojekt_IFS12
                             this.Zustand = 2;
                             break;
                         }
+                    //Rot -> RotGelb
                     case 2:
                         {
                             this.Ampelformular.GelbEin();
                             this.Zustand = 3;
                             break;
                         }
+                    //RotGelb -> Gruen
                     case 3:
                         {
                             this.Ampelformular.RotAus();
@@ -65,6 +68,7 @@ namespace Ampelprojekt_IFS12
                             this.Zustand = 4;
                             break;
                         }
+                    //Gruen -> Gelb
                     case 4:
                         {
                             this.Ampelformular.GruenAus();
@@ -72,6 +76,7 @@ namespace Ampelprojekt_IFS12
                             this.Zustand = 1;
                             break;
                         }
+                    //Catch error
                     default:
                         {
                             this.Ampelformular.GruenEin();
